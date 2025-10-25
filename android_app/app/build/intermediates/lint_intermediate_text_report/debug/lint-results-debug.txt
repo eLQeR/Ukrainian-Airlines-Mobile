@@ -1,0 +1,418 @@
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:14: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk 34
+        ~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application runs on a version of Android that is more recent than
+   your targetSdkVersion specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdkVersion
+   is less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdkVersion to the highest available value.
+   Then test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/content_main.xml:11: Warning: Replace the <fragment> tag with FragmentContainerView. [FragmentTagUsage from androidx.fragment]
+    <fragment
+     ~~~~~~~~
+
+   Explanation for issues of type "FragmentTagUsage":
+   FragmentContainerView replaces the <fragment> tag as the preferred         
+          way of adding fragments via XML. Unlike the <fragment> tag,
+   FragmentContainerView                 uses a normal FragmentTransaction
+   under the hood to add the initial fragment,                 allowing
+   further FragmentTransaction operations on the FragmentContainerView        
+           and providing a consistent timing for lifecycle events.
+
+   https://developer.android.com/reference/androidx/fragment/app/FragmentContainerView.html
+
+   Vendor: Android Open Source Project
+   Identifier: androidx.fragment
+   Feedback: https://issuetracker.google.com/issues/new?component=460964
+
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:44: Warning: A newer version of androidx.core:core-ktx than 1.12.0 is available: 1.17.0 [GradleDependency]
+    implementation 'androidx.core:core-ktx:1.12.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:45: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.7.0 is available: 2.9.4 [GradleDependency]
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:46: Warning: A newer version of androidx.activity:activity-ktx than 1.8.2 is available: 1.11.0 [GradleDependency]
+    implementation 'androidx.activity:activity-ktx:1.8.2'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:47: Warning: A newer version of androidx.fragment:fragment-ktx than 1.6.2 is available: 1.8.9 [GradleDependency]
+    implementation 'androidx.fragment:fragment-ktx:1.6.2'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:50: Warning: A newer version of com.google.android.material:material than 1.11.0 is available: 1.13.0 [GradleDependency]
+    implementation 'com.google.android.material:material:1.11.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:53: Warning: A newer version of androidx.navigation:navigation-fragment-ktx than 2.7.5 is available: 2.9.5 [GradleDependency]
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.5'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:54: Warning: A newer version of androidx.navigation:navigation-ui-ktx than 2.7.5 is available: 2.9.5 [GradleDependency]
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.5'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:57: Warning: A newer version of androidx.recyclerview:recyclerview than 1.3.2 is available: 1.4.0 [GradleDependency]
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:69: Warning: A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.3.0 [GradleDependency]
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/build.gradle:70: Warning: A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.7.0 [GradleDependency]
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/themes.xml:16: Warning: Unnecessary; SDK_INT is always >= 21 [ObsoleteSdkInt]
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+                                            ~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/themes.xml:33: Warning: Unnecessary; SDK_INT is always >= 23 [ObsoleteSdkInt]
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+                                                  ~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_booking.xml:7: Warning: Possible overdraw: Root element paints background @color/background with a theme that also paints a background (inferred theme is @style/Theme.UkrainianAirlines) [Overdraw]
+    android:background="@color/background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_bookings.xml:7: Warning: Possible overdraw: Root element paints background @color/background with a theme that also paints a background (inferred theme is @style/Theme.UkrainianAirlines) [Overdraw]
+    android:background="@color/background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_flight_results.xml:7: Warning: Possible overdraw: Root element paints background @color/background with a theme that also paints a background (inferred theme is @style/Theme.UkrainianAirlines) [Overdraw]
+    android:background="@color/background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_login.xml:7: Warning: Possible overdraw: Root element paints background @color/background with a theme that also paints a background (inferred theme is @style/Theme.UkrainianAirlines) [Overdraw]
+    android:background="@color/background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_profile.xml:7: Warning: Possible overdraw: Root element paints background @color/background with a theme that also paints a background (inferred theme is @style/Theme.UkrainianAirlines) [Overdraw]
+    android:background="@color/background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_register.xml:7: Warning: Possible overdraw: Root element paints background @color/background with a theme that also paints a background (inferred theme is @style/Theme.UkrainianAirlines) [Overdraw]
+    android:background="@color/background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_search.xml:7: Warning: Possible overdraw: Root element paints background @color/background with a theme that also paints a background (inferred theme is @style/Theme.UkrainianAirlines) [Overdraw]
+    android:background="@color/background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "Overdraw":
+   If you set a background drawable on a root view, then you should use a
+   custom theme where the theme background is null. Otherwise, the theme
+   background will be painted first, only to have your custom background
+   completely cover it; this is called "overdraw".
+
+   NOTE: This detector relies on figuring out which layouts are associated
+   with which activities based on scanning the Java code, and it's currently
+   doing that using an inexact pattern matching algorithm. Therefore, it can
+   incorrectly conclude which activity the layout is associated with and then
+   wrongly complain that a background-theme is hidden.
+
+   If you want your custom background on multiple pages, then you should
+   consider making a custom theme with your custom background and just using
+   that theme instead of a root element background.
+
+   Of course it's possible that your custom drawable is translucent and you
+   want it to be mixed with the background. However, you will get better
+   performance if you pre-mix the background with your drawable and use that
+   resulting image or color as a custom theme background instead.
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:5: Warning: The resource R.color.primary_dark appears to be unused [UnusedResources]
+    <color name="primary_dark">#003D99</color>
+           ~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:6: Warning: The resource R.color.primary_light appears to be unused [UnusedResources]
+    <color name="primary_light">#4D7EFF</color>
+           ~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:11: Warning: The resource R.color.secondary_dark appears to be unused [UnusedResources]
+    <color name="secondary_dark">#007A6B</color>
+           ~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:12: Warning: The resource R.color.secondary_light appears to be unused [UnusedResources]
+    <color name="secondary_light">#33B5A5</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:29: Warning: The resource R.color.success appears to be unused [UnusedResources]
+    <color name="success">#388E3C</color>
+           ~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:30: Warning: The resource R.color.warning appears to be unused [UnusedResources]
+    <color name="warning">#F57C00</color>
+           ~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:31: Warning: The resource R.color.info appears to be unused [UnusedResources]
+    <color name="info">#1976D2</color>
+           ~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:34: Warning: The resource R.color.divider appears to be unused [UnusedResources]
+    <color name="divider">#E0E0E0</color>
+           ~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:35: Warning: The resource R.color.border_light appears to be unused [UnusedResources]
+    <color name="border_light">#F5F5F5</color>
+           ~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:38: Warning: The resource R.color.accent appears to be unused [UnusedResources]
+    <color name="accent">#FF6B35</color>
+           ~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/colors.xml:39: Warning: The resource R.color.highlight appears to be unused [UnusedResources]
+    <color name="highlight">#FFF3E0</color>
+           ~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:5: Warning: The resource R.string.search appears to be unused [UnusedResources]
+    <string name="search">Search</string>
+            ~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:6: Warning: The resource R.string.book appears to be unused [UnusedResources]
+    <string name="book">Book</string>
+            ~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:7: Warning: The resource R.string.cancel appears to be unused [UnusedResources]
+    <string name="cancel">Cancel</string>
+            ~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:8: Warning: The resource R.string.confirm appears to be unused [UnusedResources]
+    <string name="confirm">Confirm</string>
+            ~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:9: Warning: The resource R.string.loading appears to be unused [UnusedResources]
+    <string name="loading">Loading...</string>
+            ~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:10: Warning: The resource R.string.error appears to be unused [UnusedResources]
+    <string name="error">Error</string>
+            ~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:11: Warning: The resource R.string.retry appears to be unused [UnusedResources]
+    <string name="retry">Retry</string>
+            ~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:12: Warning: The resource R.string.no_internet appears to be unused [UnusedResources]
+    <string name="no_internet">No internet connection</string>
+            ~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:23: Warning: The resource R.string.return_date appears to be unused [UnusedResources]
+    <string name="return_date">Return Date</string>
+            ~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:24: Warning: The resource R.string.passengers appears to be unused [UnusedResources]
+    <string name="passengers">Passengers</string>
+            ~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:25: Warning: The resource R.string.one_way appears to be unused [UnusedResources]
+    <string name="one_way">One Way</string>
+            ~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:26: Warning: The resource R.string.round_trip appears to be unused [UnusedResources]
+    <string name="round_trip">Round Trip</string>
+            ~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:28: Warning: The resource R.string.select_airport appears to be unused [UnusedResources]
+    <string name="select_airport">Select Airport</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:29: Warning: The resource R.string.select_date appears to be unused [UnusedResources]
+    <string name="select_date">Select Date</string>
+            ~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:34: Warning: The resource R.string.direct appears to be unused [UnusedResources]
+    <string name="direct">Direct</string>
+            ~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:35: Warning: The resource R.string.stops appears to be unused [UnusedResources]
+    <string name="stops">stop(s)</string>
+            ~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:36: Warning: The resource R.string.duration appears to be unused [UnusedResources]
+    <string name="duration">Duration</string>
+            ~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:37: Warning: The resource R.string.price appears to be unused [UnusedResources]
+    <string name="price">Price</string>
+            ~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:45: Warning: The resource R.string.phone appears to be unused [UnusedResources]
+    <string name="phone">Phone</string>
+            ~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:48: Warning: The resource R.string.booking_failed appears to be unused [UnusedResources]
+    <string name="booking_failed">Booking Failed</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:58: Warning: The resource R.string.invalid_credentials appears to be unused [UnusedResources]
+    <string name="invalid_credentials">Invalid credentials</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:62: Warning: The resource R.string.edit_profile appears to be unused [UnusedResources]
+    <string name="edit_profile">Edit Profile</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:63: Warning: The resource R.string.save appears to be unused [UnusedResources]
+    <string name="save">Save</string>
+            ~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:67: Warning: The resource R.string.order_details appears to be unused [UnusedResources]
+    <string name="order_details">Order Details</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:68: Warning: The resource R.string.order_cancelled appears to be unused [UnusedResources]
+    <string name="order_cancelled">Order Cancelled</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:69: Warning: The resource R.string.cancel_order appears to be unused [UnusedResources]
+    <string name="cancel_order">Cancel Order</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/themes.xml:54: Warning: The resource R.style.TextAppearance_UkrainianAirlines_Caption appears to be unused [UnusedResources]
+    <style name="TextAppearance.UkrainianAirlines.Caption" parent="TextAppearance.Material3.BodySmall">
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/values/strings.xml:9: Warning: Replace "..." with ellipsis character (…, &#8230;) ? [TypographyEllipsis]
+    <string name="loading">Loading...</string>
+                           ~~~~~~~~~~
+
+   Explanation for issues of type "TypographyEllipsis":
+   You can replace the string "..." with a dedicated ellipsis character,
+   ellipsis character (u2026, &#8230;). This can help make the text more
+   readable.
+
+   https://en.wikipedia.org/wiki/Ellipsis
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-hdpi/ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-mdpi/ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-xhdpi/ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-xxhdpi/ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-hdpi/ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-mdpi/ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+
+   Explanation for issues of type "IconLauncherShape":
+   According to the Android Design Guide
+   (https://material.io/design/iconography/) your launcher icons should "use a
+   distinct silhouette", a "three-dimensional, front view, with a slight
+   perspective as if viewed from above, so that users perceive some depth."
+
+   The unique silhouette implies that your launcher icon should not be a
+   filled square.
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-hdpi/ic_launcher_round.png: Warning: The following unrelated icon files have identical contents: ic_launcher.png, ic_launcher_round.png [IconDuplicates]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-mdpi/ic_launcher_round.png: Warning: The following unrelated icon files have identical contents: ic_launcher.png, ic_launcher_round.png [IconDuplicates]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png: Warning: The following unrelated icon files have identical contents: ic_launcher.png, ic_launcher_round.png [IconDuplicates]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png: Warning: The following unrelated icon files have identical contents: ic_launcher.png, ic_launcher_round.png [IconDuplicates]
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png: Warning: The following unrelated icon files have identical contents: ic_launcher.png, ic_launcher_round.png [IconDuplicates]
+
+   Explanation for issues of type "IconDuplicates":
+   If an icon is repeated under different names, you can consolidate and just
+   use one of the icons and delete the others to make your application
+   smaller. However, duplicated icons usually are not intentional and can
+   sometimes point to icons that were accidentally overwritten or accidentally
+   not updated.
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_search.xml:97: Warning: 'clickable' attribute found, please also add 'focusable' [KeyboardInaccessibleWidget]
+                        android:clickable="true"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "KeyboardInaccessibleWidget":
+   A widget that is declared to be clickable but not declared to be focusable
+   is not accessible via the keyboard. Please add the focusable attribute as
+   well.
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_search.xml:47: Warning: Missing accessibility label: provide either a view with an android:labelFor that references this view or provide an android:hint [LabelFor]
+                    <AutoCompleteTextView
+                     ~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_search.xml:76: Warning: Missing accessibility label: provide either a view with an android:labelFor that references this view or provide an android:hint [LabelFor]
+                    <AutoCompleteTextView
+                     ~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "LabelFor":
+   Editable text fields should provide an android:hint or, provided your
+   minSdkVersion is at least 17, they may be referenced by a view with a
+   android:labelFor attribute.
+
+   When using android:labelFor, be sure to provide an android:text or an
+   android:contentDescription.
+
+   If your view is labeled but by a label in a different layout which includes
+   this one, just suppress this warning from lint.
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/FlightAdapter.kt:53: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            routeText.text = "${flight.route.source.closest_big_city} → ${flight.route.destination.closest_big_city}"
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/FlightAdapter.kt:72: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            seatsText.text = "${flight.tickets_available} seats available"
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/FlightAdapter.kt:72: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            seatsText.text = "${flight.tickets_available} seats available"
+                                                         ~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/FlightAdapter.kt:75: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            priceText.text = "From $299"
+                             ~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/FlightAdapter.kt:75: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            priceText.text = "From $299"
+                              ~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/FlightAdapter.kt:75: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            priceText.text = "From $299"
+                                    ~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/OrdersAdapter.kt:47: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            orderIdText.text = "Order #${order.id}"
+                               ~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/OrdersAdapter.kt:47: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            orderIdText.text = "Order #${order.id}"
+                                ~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/OrdersAdapter.kt:58: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            ticketsText.text = "${order.tickets.size} ticket(s)"
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/java/com/example/ukrainianairlines/ui/screens/OrdersAdapter.kt:58: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            ticketsText.text = "${order.tickets.size} ticket(s)"
+                                                     ~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_bookings.xml:46: Warning: Hardcoded string "No bookings found", should use @string resource [HardcodedText]
+        android:text="No bookings found"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_login.xml:86: Warning: Hardcoded string "Don't have an account? Register", should use @string resource [HardcodedText]
+                    android:text="Don't have an account? Register"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_profile.xml:51: Warning: Hardcoded string "Welcome back!", should use @string resource [HardcodedText]
+                        android:text="Welcome back!"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_profile.xml:58: Warning: Hardcoded string "You are logged in and can book flights and view your orders.", should use @string resource [HardcodedText]
+                        android:text="You are logged in and can book flights and view your orders."
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_profile.xml:99: Warning: Hardcoded string "Please log in to book flights and view your orders.", should use @string resource [HardcodedText]
+                        android:text="Please log in to book flights and view your orders."
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_register.xml:118: Warning: Hardcoded string "Already have an account? Login", should use @string resource [HardcodedText]
+                    android:text="Already have an account? Login"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/user/Ukrainian-Airlines/android_app/app/src/main/res/layout/fragment_search.xml:64: Warning: Hardcoded string "Swap airports", should use @string resource [HardcodedText]
+                    android:contentDescription="Swap airports"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+0 errors, 95 warnings
