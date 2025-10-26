@@ -77,7 +77,7 @@ class LoginFragment : Fragment() {
     private fun performLogin() {
         val username = usernameInput.text.toString().trim()
         val password = passwordInput.text.toString().trim()
-
+        System.out.println("nigga = " + username + " " + password)
         if (username.isEmpty() || password.isEmpty()) {
             Snackbar.make(requireView(), "Please fill all fields", Snackbar.LENGTH_SHORT).show()
             return

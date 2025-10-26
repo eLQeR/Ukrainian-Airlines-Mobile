@@ -7,6 +7,11 @@
         android:title="@string/nav_search" />
 
     <item
+        android:id="@+id/nav_airports"
+        android:icon="@drawable/ic_search"
+        android:title="@string/nav_airports" />
+
+    <item
         android:id="@+id/nav_bookings"
         android:icon="@drawable/ic_bookings"
         android:title="@string/nav_bookings" />

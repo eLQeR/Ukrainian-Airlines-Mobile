@@ -68,4 +68,25 @@
         android:label="@string/register"
         tools:layout="@layout/fragment_register" />
 
+    <!-- Airports list and details -->
+    <fragment
+        android:id="@+id/nav_airports"
+        android:name="com.example.ukrainianairlines.ui.screens.AirportsListFragment"
+        android:label="@string/nav_airports"
+        tools:layout="@layout/fragment_airports_list">
+        <action
+            android:id="@+id/action_nav_airports_to_airportDetails"
+            app:destination="@id/airportDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/airportDetailsFragment"
+        android:name="com.example.ukrainianairlines.ui.screens.AirportDetailsFragment"
+        android:label="@string/airport_details"
+        tools:layout="@layout/fragment_airport_details">
+        <argument
+            android:name="airportId"
+            app:argType="integer" />
+    </fragment>
+
 </navigation>

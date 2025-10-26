@@ -13,6 +13,7 @@
 
     <!-- Navigation -->
     <string name="nav_search">Search Flights</string>
+    <string name="nav_airports">Airports</string>
     <string name="nav_bookings">My Bookings</string>
     <string name="nav_profile">Profile</string>
 
@@ -67,4 +68,8 @@
     <string name="order_details">Order Details</string>
     <string name="order_cancelled">Order Cancelled</string>
     <string name="cancel_order">Cancel Order</string>
+
+    <!-- Airports -->
+    <string name="airport_details">Airport Details</string>
+    <string name="airports_empty">No airports available</string>
 </resources>

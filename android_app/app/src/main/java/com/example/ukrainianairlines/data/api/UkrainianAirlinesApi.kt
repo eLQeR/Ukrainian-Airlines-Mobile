@@ -1,6 +1,7 @@
 package com.example.ukrainianairlines.data.api
 
 import com.example.ukrainianairlines.data.model.*
+import com.google.gson.JsonElement
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,7 +39,7 @@ interface UkrainianAirlinesApi {
     suspend fun getAirports(
         @Query("name") name: String? = null,
         @Query("city") city: String? = null
-    ): Response<List<Airport>>
+    ): Response<JsonElement>
 
     @GET("api/airlines/airports/{id}/")
     suspend fun getAirport(@Path("id") airportId: Int): Response<Airport>

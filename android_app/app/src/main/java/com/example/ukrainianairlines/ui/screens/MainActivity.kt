@@ -29,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         val bottomNavView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
         bottomNavView.setupWithNavController(navController)
 
-        // Setup app bar
+        // Setup app bar (include airports as a top-level destination)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_search, R.id.nav_bookings, R.id.nav_profile)
+            setOf(R.id.nav_search, R.id.nav_airports, R.id.nav_bookings, R.id.nav_profile)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
