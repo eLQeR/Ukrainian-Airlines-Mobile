@@ -4,7 +4,7 @@
             "outputFile": "com.example.ukrainianairlines.app-mergeDebugResources-46:/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "/Users/user/.gradle/caches/8.10.1/transforms/4d1c27fa10c31b32d791d11d062d36a4/transformed/appcompat-1.6.1/res/values-port/values-port.xml",
+                    "source": "C:\\Users\\jonathankenway\\.gradle\\caches\\8.10.1\\transforms\\4d1c27fa10c31b32d791d11d062d36a4\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

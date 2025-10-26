@@ -29,8 +29,13 @@ drawable ic_profile
 drawable ic_search
 drawable ic_swap
 id action_flightResultsFragment_to_bookingFragment
+id action_nav_airports_to_airportDetails
 id action_nav_search_to_flightResultsFragment
 id airplane_text
+id airportDetailsFragment
+id airport_city
+id airport_name
+id airports_recycler_view
 id arrival_time_text
 id book_button
 id bookingFragment
@@ -55,6 +60,7 @@ id login_button
 id login_link
 id logout_button
 id mobile_navigation
+id nav_airports
 id nav_bookings
 id nav_host_fragment_content_main
 id nav_profile
@@ -68,6 +74,8 @@ id registerFragment
 id register_button
 id register_link
 id route_text
+id routes_label
+id routes_recycler_view
 id search_button
 id seats_text
 id status_text
@@ -78,6 +86,8 @@ id toolbar
 id username_input
 layout activity_main
 layout content_main
+layout fragment_airport_details
+layout fragment_airports_list
 layout fragment_booking
 layout fragment_bookings
 layout fragment_flight_results
@@ -85,12 +95,15 @@ layout fragment_login
 layout fragment_profile
 layout fragment_register
 layout fragment_search
+layout item_airport
 layout item_flight
 layout item_order
 menu bottom_nav_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation
+string airport_details
+string airports_empty
 string app_name
 string book
 string book_flight
@@ -117,6 +130,7 @@ string login_required
 string logout
 string my_orders
 string my_profile
+string nav_airports
 string nav_bookings
 string nav_profile
 string nav_search

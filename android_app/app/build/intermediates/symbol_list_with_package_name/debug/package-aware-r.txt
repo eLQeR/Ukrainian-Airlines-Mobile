@@ -3126,12 +3126,17 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_nav_airports_to_airportDetails
 id action_nav_search_to_flightResultsFragment
 id action_text
 id actions
 id activity_chooser_view_content
 id add
 id airplane_text
+id airportDetailsFragment
+id airport_city
+id airport_name
+id airports_recycler_view
 id alertTitle
 id aligned
 id all
@@ -3363,6 +3368,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id nav_airports
 id nav_bookings
 id nav_controller_view_tag
 id nav_host_fragment_container
@@ -3438,6 +3444,8 @@ id right_icon
 id right_side
 id rounded
 id route_text
+id routes_label
+id routes_recycler_view
 id row_index_key
 id rtl
 id save_non_transition_alpha
@@ -3700,6 +3708,8 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_airport_details
+layout fragment_airports_list
 layout fragment_booking
 layout fragment_bookings
 layout fragment_flight_results
@@ -3709,6 +3719,7 @@ layout fragment_register
 layout fragment_search
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_airport
 layout item_flight
 layout item_order
 layout m3_alert_dialog
@@ -3804,6 +3815,8 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string airport_details
+string airports_empty
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -3958,6 +3971,7 @@ string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string my_orders
 string my_profile
+string nav_airports
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string nav_bookings

@@ -4,7 +4,7 @@
             "outputFile": "com.example.ukrainianairlines.app-mergeDebugResources-46:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "/Users/user/.gradle/caches/8.10.1/transforms/8f833cb9682062da37d45df47e2d7095/transformed/material-1.11.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+                    "source": "C:\\Users\\jonathankenway\\.gradle\\caches\\8.10.1\\transforms\\8f833cb9682062da37d45df47e2d7095\\transformed\\material-1.11.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

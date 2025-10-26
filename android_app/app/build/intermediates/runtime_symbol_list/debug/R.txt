@@ -3125,12 +3125,17 @@ int id action_menu_presenter 0x7f08003d
 int id action_mode_bar 0x7f08003e
 int id action_mode_bar_stub 0x7f08003f
 int id action_mode_close_button 0x7f080040
+int id action_nav_airports_to_airportDetails 0x7f0801fa
 int id action_nav_search_to_flightResultsFragment 0x7f080041
 int id action_text 0x7f080042
 int id actions 0x7f080043
 int id activity_chooser_view_content 0x7f080044
 int id add 0x7f080045
 int id airplane_text 0x7f080046
+int id airportDetailsFragment 0x7f0801fb
+int id airport_city 0x7f0801fc
+int id airport_name 0x7f0801fd
+int id airports_recycler_view 0x7f0801fe
 int id alertTitle 0x7f080047
 int id aligned 0x7f080048
 int id all 0x7f080049
@@ -3362,6 +3367,7 @@ int id mtrl_picker_text_input_range_start 0x7f08012a
 int id mtrl_picker_title_text 0x7f08012b
 int id mtrl_view_tag_bottom_padding 0x7f08012c
 int id multiply 0x7f08012d
+int id nav_airports 0x7f0801ff
 int id nav_bookings 0x7f08012e
 int id nav_controller_view_tag 0x7f08012f
 int id nav_host_fragment_container 0x7f080130
@@ -3437,6 +3443,8 @@ int id right_icon 0x7f080175
 int id right_side 0x7f080176
 int id rounded 0x7f080177
 int id route_text 0x7f080178
+int id routes_label 0x7f080201
+int id routes_recycler_view 0x7f080202
 int id row_index_key 0x7f080179
 int id rtl 0x7f08017a
 int id save_non_transition_alpha 0x7f08017b
@@ -3699,6 +3707,8 @@ int layout design_navigation_menu 0x7f0b002a
 int layout design_navigation_menu_item 0x7f0b002b
 int layout design_text_input_end_icon 0x7f0b002c
 int layout design_text_input_start_icon 0x7f0b002d
+int layout fragment_airport_details 0x7f0b0076
+int layout fragment_airports_list 0x7f0b0077
 int layout fragment_booking 0x7f0b002e
 int layout fragment_bookings 0x7f0b002f
 int layout fragment_flight_results 0x7f0b0030
@@ -3708,6 +3718,7 @@ int layout fragment_register 0x7f0b0033
 int layout fragment_search 0x7f0b0034
 int layout ime_base_split_test_activity 0x7f0b0035
 int layout ime_secondary_split_test_activity 0x7f0b0036
+int layout item_airport 0x7f0b0078
 int layout item_flight 0x7f0b0037
 int layout item_order 0x7f0b0038
 int layout m3_alert_dialog 0x7f0b0039
@@ -3803,6 +3814,8 @@ int string abc_searchview_description_voice 0x7f110017
 int string abc_shareactionprovider_share_with 0x7f110018
 int string abc_shareactionprovider_share_with_application 0x7f110019
 int string abc_toolbar_collapse_description 0x7f11001a
+int string airport_details 0x7f1100dd
+int string airports_empty 0x7f1100de
 int string androidx_startup 0x7f11001b
 int string app_name 0x7f11001c
 int string appbar_scrolling_view_behavior 0x7f11001d
@@ -3957,6 +3970,7 @@ int string mtrl_timepicker_cancel 0x7f1100b1
 int string mtrl_timepicker_confirm 0x7f1100b2
 int string my_orders 0x7f1100b3
 int string my_profile 0x7f1100b4
+int string nav_airports 0x7f1100df
 int string nav_app_bar_navigate_up_description 0x7f1100b5
 int string nav_app_bar_open_drawer_description 0x7f1100b6
 int string nav_bookings 0x7f1100b7
