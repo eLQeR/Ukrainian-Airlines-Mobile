@@ -1,7 +1,6 @@
 package com.example.ukrainianairlines.data.api
 
 import com.example.ukrainianairlines.data.model.*
-import com.google.gson.JsonElement
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,6 +8,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+
 
 interface UkrainianAirlinesApi {
 
@@ -29,17 +29,17 @@ interface UkrainianAirlinesApi {
         @Query("destination_airport") destinationAirport: Int? = null,
         @Query("departure_date") departureDate: String? = null,
         @Query("route") route: Int? = null
-    ): Response<JsonElement>
+    ): Response<List<Flight>>
 
     @GET("api/airlines/flights/{id}/")
-    suspend fun getFlight(@Path("id") flightId: Int): Response<JsonElement>
+    suspend fun getFlight(@Path("id") flightId: Int): Response<Flight>
 
     // Airports
     @GET("api/airlines/airports/")
     suspend fun getAirports(
         @Query("name") name: String? = null,
         @Query("city") city: String? = null
-    ): Response<JsonElement>
+    ): Response<List<Airport>>
 
     @GET("api/airlines/airports/{id}/")
     suspend fun getAirport(@Path("id") airportId: Int): Response<Airport>
@@ -53,19 +53,19 @@ interface UkrainianAirlinesApi {
 
     // Orders
     @GET("api/airlines/orders/")
-    suspend fun getOrders(): Response<com.google.gson.JsonElement>
+    suspend fun getOrders(): Response<PaginatedOrders>
 
     @POST("api/airlines/orders/")
-    suspend fun createOrder(@Body order: com.google.gson.JsonElement): Response<com.google.gson.JsonElement>
+    suspend fun createOrder(@Body order: Order): Response<Order>
 
     @GET("api/airlines/orders/{id}/")
-    suspend fun getOrder(@Path("id") orderId: Int): Response<com.google.gson.JsonElement>
+    suspend fun getOrder(@Path("id") orderId: Int): Response<Order>
 
     @POST("api/airlines/orders/{id}/cancel/")
-    suspend fun cancelOrder(@Path("id") orderId: Int): Response<com.google.gson.JsonElement>
+    suspend fun cancelOrder(@Path("id") orderId: Int): Response<Order>
 
-    // Flight search (use flights endpoint)
-    @GET("api/airlines/flights/")
+    // Flight search with transfers
+    @GET("api/airlines/get-ways/")
     suspend fun searchFlights(
         @Query("airport1") fromAirport: Int,
         @Query("airport2") toAirport: Int,

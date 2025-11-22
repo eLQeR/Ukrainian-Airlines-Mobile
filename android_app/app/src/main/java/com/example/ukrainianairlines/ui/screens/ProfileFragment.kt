@@ -18,11 +18,8 @@ class ProfileFragment : Fragment() {
 
     private val authViewModel: AuthViewModel by viewModels()
 
-    private lateinit var headerText: TextView
-    private lateinit var loggedInGroup: LinearLayout
-    private lateinit var loggedOutGroup: LinearLayout
-    private lateinit var loginButton: Button
-    private lateinit var registerButton: Button
+    private lateinit var userNameText: TextView
+    private lateinit var userEmailText: TextView
     private lateinit var logoutButton: Button
 
     override fun onCreateView(
@@ -32,12 +29,9 @@ class ProfileFragment : Fragment() {
     ): View {
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        headerText = root.findViewById(R.id.header_text)
-        loggedInGroup = root.findViewById(R.id.logged_in_group)
-        loggedOutGroup = root.findViewById(R.id.logged_out_group)
-        loginButton = root.findViewById(R.id.login_button)
-        registerButton = root.findViewById(R.id.register_button)
-        logoutButton = root.findViewById(R.id.logout_button)
+        userNameText = root.findViewById(R.id.userName)
+        userEmailText = root.findViewById(R.id.userEmail)
+        logoutButton = root.findViewById(R.id.logoutBtn)
 
         setupUI()
         observeViewModel()
@@ -47,14 +41,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupUI() {
-        loginButton.setOnClickListener {
-            navigateToLogin()
-        }
-
-        registerButton.setOnClickListener {
-            navigateToRegister()
-        }
-
         logoutButton.setOnClickListener {
             authViewModel.logout()
         }
@@ -77,18 +63,18 @@ class ProfileFragment : Fragment() {
         val isLoggedIn = authViewModel.isLoggedIn.value ?: false
 
         if (isLoggedIn) {
-            loggedInGroup.visibility = View.VISIBLE
-            loggedOutGroup.visibility = View.GONE
-            headerText.text = getString(R.string.my_profile)
+            // Show user info and logout button
+            userNameText.text = "John Doe" // TODO: Get from user data
+            userEmailText.text = "john.doe@example.com" // TODO: Get from user data
+            logoutButton.visibility = View.VISIBLE
         } else {
-            loggedInGroup.visibility = View.GONE
-            loggedOutGroup.visibility = View.VISIBLE
-            headerText.text = getString(R.string.login_required)
+            // Navigate to login if not logged in
+            navigateToLogin()
         }
     }
 
     private fun navigateToLogin() {
-        findNavController().navigate(R.id.loginFragment)
+        findNavController().navigate(R.id.action_global_to_login)
     }
 
     private fun navigateToRegister() {

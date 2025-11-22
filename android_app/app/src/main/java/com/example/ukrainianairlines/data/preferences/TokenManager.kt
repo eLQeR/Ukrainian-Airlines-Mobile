@@ -3,11 +3,9 @@ package com.example.ukrainianairlines.data.preferences
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.ukrainianairlines.data.model.AuthTokens
-import com.google.gson.Gson
 
-class TokenManager(private val context: Context) {
+class TokenManager(context: Context) {
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-    private val gson = Gson()
 
     companion object {
         private const val PREFS_NAME = "ukrainian_airlines_prefs"
@@ -60,5 +58,9 @@ class TokenManager(private val context: Context) {
             putLong(TOKEN_EXPIRY, System.currentTimeMillis() + 15 * 60 * 1000) // 15 minutes
             apply()
         }
+    }
+
+    fun getUserEmail(): String? {
+        return prefs.getString("user_email", null)
     }
 }

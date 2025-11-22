@@ -8,10 +8,10 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ukrainianairlines.R
-import com.example.ukrainianairlines.data.model.Order
 import com.example.ukrainianairlines.ui.viewmodels.BookingViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,6 +22,7 @@ class BookingsFragment : Fragment() {
     private lateinit var emptyStateText: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var ordersAdapter: OrdersAdapter
+    private lateinit var userInfoText: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,17 +34,22 @@ class BookingsFragment : Fragment() {
         ordersRecyclerView = root.findViewById(R.id.orders_recycler_view)
         emptyStateText = root.findViewById(R.id.empty_state_text)
         progressBar = root.findViewById(R.id.progress_bar)
+        userInfoText = root.findViewById(R.id.user_info_text)
 
         setupRecyclerView()
         observeViewModel()
         loadOrders()
+        displayUserInfo()
 
         return root
     }
 
     private fun setupRecyclerView() {
         ordersAdapter = OrdersAdapter { order ->
-            // Handle order click - maybe show details
+            val bundle = Bundle().apply {
+                putInt("orderId", order.id ?: 0)
+            }
+            findNavController().navigate(R.id.orderDetailFragment, bundle)
         }
 
         ordersRecyclerView.apply {
@@ -82,5 +88,12 @@ class BookingsFragment : Fragment() {
             emptyStateText.visibility = View.GONE
             ordersRecyclerView.visibility = View.VISIBLE
         }
+    }
+
+    private fun displayUserInfo() {
+        val app = requireActivity().application as com.example.ukrainianairlines.UkrainianAirlinesApplication
+        val tokenManager = app.tokenManager
+        val userEmail = tokenManager.getUserEmail()
+        userInfoText.text = getString(R.string.logged_in_as, userEmail ?: getString(R.string.unknown_user))
     }
 }

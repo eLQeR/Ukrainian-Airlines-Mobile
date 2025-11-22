@@ -1,6 +1,8 @@
 package com.example.ukrainianairlines.ui.screens
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -29,20 +31,27 @@ class MainActivity : AppCompatActivity() {
         val bottomNavView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
         bottomNavView.setupWithNavController(navController)
 
-        // Setup app bar (include airports as a top-level destination)
+        // Setup app bar
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_search, R.id.nav_airports, R.id.nav_bookings, R.id.nav_profile)
+            setOf(R.id.nav_search, R.id.nav_bookings, R.id.nav_profile)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Observe authentication state
         authViewModel.isLoggedIn.observe(this) { isLoggedIn ->
-            updateNavigationVisibility(isLoggedIn)
+            if (!isLoggedIn) {
+                // Only navigate to login if we're not already there or on register screen
+                val currentDestination = navController.currentDestination?.id
+                if (currentDestination != R.id.loginFragment && currentDestination != R.id.registerFragment) {
+                    navController.navigate(R.id.action_global_to_login)
+                }
+            }
         }
-    }
 
-    private fun updateNavigationVisibility(isLoggedIn: Boolean) {
-        // Update UI based on login state if needed
+        // Copilot icon click listener
+        findViewById<ImageView>(R.id.copilot_icon).setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java))
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

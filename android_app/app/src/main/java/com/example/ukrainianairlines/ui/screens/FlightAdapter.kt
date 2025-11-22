@@ -12,12 +12,9 @@ import com.example.ukrainianairlines.R
 import com.example.ukrainianairlines.data.model.Flight
 import java.text.SimpleDateFormat
 import java.util.*
-import android.util.Log
 
-class FlightAdapter(
-    private val onBookClick: (Flight) -> Unit,
-    private val onItemClick: (Flight) -> Unit
-) : ListAdapter<Flight, FlightAdapter.FlightViewHolder>(FlightDiffCallback()) {
+class FlightAdapter(private val onFlightClick: (Flight) -> Unit) :
+    ListAdapter<Flight, FlightAdapter.FlightViewHolder>(FlightDiffCallback()) {
 
     private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     private val dateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
@@ -43,61 +40,54 @@ class FlightAdapter(
         private val bookButton: Button = itemView.findViewById(R.id.book_button)
 
         init {
-            // Book button -> navigate to booking
             bookButton.setOnClickListener {
-                val position = adapterPosition
+                val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    onBookClick(getItem(position))
-                }
-            }
-
-            // Whole item click -> open flight details
-            itemView.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onItemClick(getItem(position))
+                    onFlightClick(getItem(position))
                 }
             }
         }
 
         fun bind(flight: Flight) {
-            try {
-                // Binding logic
-                // Route
-                routeText.text = "${flight.route.source.closest_big_city} → ${flight.route.destination.closest_big_city}"
-
-                // Times
-                departureTimeText.text = timeFormat.format(
-                    SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
-                        .parse(flight.departure_time) ?: Date()
-                )
-                arrivalTimeText.text = timeFormat.format(
-                    SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
-                        .parse(flight.arrival_time) ?: Date()
-                )
-
-                // Duration
-                durationText.text = flight.time_of_flight ?: "N/A"
-
-                // Airplane
-                airplaneText.text = flight.airplane.name
-
-                // Available seats
-                seatsText.text = "${flight.tickets_available} seats available"
-
-                // Price (placeholder - you might want to add price to your model)
-                priceText.text = "From $299"
-            } catch (e: Exception) {
-                Log.e("UAR.Adapter", "Failed to bind flight id=${flight.id}", e)
-                // Provide safe fallbacks to avoid blank UI
-                try { routeText.text = "N/A" } catch (_: Exception) {}
-                try { departureTimeText.text = "--:--" } catch (_: Exception) {}
-                try { arrivalTimeText.text = "--:--" } catch (_: Exception) {}
-                try { durationText.text = "N/A" } catch (_: Exception) {}
-                try { airplaneText.text = "Unknown" } catch (_: Exception) {}
-                try { seatsText.text = "0 seats available" } catch (_: Exception) {}
-                try { priceText.text = "From --" } catch (_: Exception) {}
+            val route = flight.route
+            val source = when {
+                route?.source is Map<*, *> -> (route.source as Map<*, *>)["closest_big_city"]?.toString()
+                route?.source is String -> route.source as String
+                else -> "?"
             }
+            val destination = when {
+                route?.destination is Map<*, *> -> (route.destination as Map<*, *>)["closest_big_city"]?.toString()
+                route?.destination is String -> route.destination as String
+                else -> "?"
+            }
+            routeText.text = if (route != null) "$source 2 $destination" else "Flight not available"
+
+            // Times
+            departureTimeText.text = timeFormat.format(
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+                    .parse(flight.departure_time ?: "") ?: Date()
+            )
+            arrivalTimeText.text = timeFormat.format(
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+                    .parse(flight.arrival_time ?: "") ?: Date()
+            )
+
+            // Duration
+            durationText.text = flight.time_of_flight ?: "N/A"
+
+            // Airplane
+            val airplaneName = when {
+                flight.airplane is Map<*, *> -> (flight.airplane["name"] as? String)
+                flight.airplane is String -> flight.airplane as String
+                else -> null
+            }
+            airplaneText.text = airplaneName ?: "Unknown airplane"
+
+            // Available seats
+            seatsText.text = "${flight.tickets_available} seats available"
+
+            // Price (placeholder - you might want to add price to your model)
+            priceText.text = "From $299"
         }
     }
 

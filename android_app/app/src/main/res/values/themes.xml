@@ -78,4 +78,12 @@
         <item name="boxStrokeColor">@color/primary</item>
         <item name="hintTextColor">@color/text_hint</item>
     </style>
+
+    <!-- Circle ImageView style for profile pictures -->
+    <style name="CircleImageView">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:background">@drawable/circle_background</item>
+    </style>
 </resources>

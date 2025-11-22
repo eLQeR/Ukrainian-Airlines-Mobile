@@ -37,4 +37,9 @@
     <!-- Accent Colors -->
     <color name="accent">#FF6B35</color>
     <color name="highlight">#FFF3E0</color>
+
+    <!-- Basic Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
 </resources>

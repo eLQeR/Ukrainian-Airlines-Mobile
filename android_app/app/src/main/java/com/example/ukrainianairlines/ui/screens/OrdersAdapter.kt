@@ -29,13 +29,14 @@ class OrdersAdapter(private val onOrderClick: (Order) -> Unit) :
     inner class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val orderIdText: TextView = itemView.findViewById(R.id.order_id_text)
+        private val flightRouteText: TextView = itemView.findViewById(R.id.flightRoute)
         private val dateText: TextView = itemView.findViewById(R.id.date_text)
-        private val ticketsText: TextView = itemView.findViewById(R.id.tickets_text)
+        private val orderPriceText: TextView = itemView.findViewById(R.id.orderPrice)
         private val statusText: TextView = itemView.findViewById(R.id.status_text)
 
         init {
             itemView.setOnClickListener {
-                val position = adapterPosition
+                val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     onOrderClick(getItem(position))
                 }
@@ -44,7 +45,26 @@ class OrdersAdapter(private val onOrderClick: (Order) -> Unit) :
 
         fun bind(order: Order) {
             // Order ID
-            orderIdText.text = "Order #${order.id}"
+            orderIdText.text = itemView.context.getString(R.string.order_id_format, order.id)
+
+            // Flight route - show first ticket's route if available
+            if (order.tickets.isNotEmpty()) {
+                val ticket = order.tickets.first()
+                val route = ticket.flight?.route
+                val source = when {
+                    route?.source is Map<*, *> -> (route.source as Map<*, *>)["name"]?.toString()
+                    route?.source is String -> route.source as String
+                    else -> "?"
+                }
+                val destination = when {
+                    route?.destination is Map<*, *> -> (route.destination as Map<*, *>)["name"]?.toString()
+                    route?.destination is String -> route.destination as String
+                    else -> "?"
+                }
+                flightRouteText.text = if (route != null) "$source 2 $destination" else "Flight not available"
+            } else {
+                flightRouteText.text = "No tickets"
+            }
 
             // Created date
             order.created_at?.let {
@@ -54,17 +74,21 @@ class OrdersAdapter(private val onOrderClick: (Order) -> Unit) :
                 )
             }
 
-            // Tickets count
-            ticketsText.text = "${order.tickets.size} ticket(s)"
+            // Order price - placeholder since no price in model
+            orderPriceText.text = "$${order.tickets.size * 100}.00"
 
             // Status
-            statusText.text = if (order.is_cancelled) "Cancelled" else "Active"
+            statusText.text = if (order.is_cancelled) itemView.context.getString(R.string.status_cancelled) else itemView.context.getString(R.string.status_active)
             statusText.setTextColor(
                 itemView.context.getColor(
                     if (order.is_cancelled) android.R.color.holo_red_dark
                     else android.R.color.holo_green_dark
                 )
             )
+
+            // Improve visual appearance: add padding and bold for status
+            statusText.setPadding(8, 8, 8, 8)
+            statusText.setTypeface(null, android.graphics.Typeface.BOLD)
         }
     }
 

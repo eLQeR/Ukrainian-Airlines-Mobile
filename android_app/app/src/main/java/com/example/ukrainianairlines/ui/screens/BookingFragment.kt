@@ -24,8 +24,6 @@ class BookingFragment : Fragment() {
     private lateinit var firstNameInput: EditText
     private lateinit var lastNameInput: EditText
     private lateinit var emailInput: EditText
-    private lateinit var rowInput: EditText
-    private lateinit var seatInput: EditText
     private lateinit var bookButton: Button
     private lateinit var progressBar: ProgressBar
 
@@ -48,8 +46,6 @@ class BookingFragment : Fragment() {
         firstNameInput = root.findViewById(R.id.first_name_input)
         lastNameInput = root.findViewById(R.id.last_name_input)
         emailInput = root.findViewById(R.id.email_input)
-    rowInput = root.findViewById(R.id.row_input)
-    seatInput = root.findViewById(R.id.seat_input)
         bookButton = root.findViewById(R.id.book_button)
         progressBar = root.findViewById(R.id.progress_bar)
 
@@ -101,24 +97,10 @@ class BookingFragment : Fragment() {
             last_name = lastName
         )
 
-        // Read selected row/seat
-        val rowVal = rowInput.text.toString().trim()
-        val seatVal = seatInput.text.toString().trim()
-        if (rowVal.isEmpty() || seatVal.isEmpty()) {
-            Snackbar.make(requireView(), "Please select row and seat", Snackbar.LENGTH_SHORT).show()
-            return
-        }
-        val rowNum = try { rowVal.toInt() } catch (e: NumberFormatException) { -1 }
-        val seatNum = try { seatVal.toInt() } catch (e: NumberFormatException) { -1 }
-        if (rowNum <= 0 || seatNum <= 0) {
-            Snackbar.make(requireView(), "Row and seat must be positive numbers", Snackbar.LENGTH_SHORT).show()
-            return
-        }
-
-        // Create ticket with selected seat
+        // Create ticket (simplified - in real app you'd select seat)
         val ticket = Ticket(
-            row = rowNum,
-            seat = seatNum,
+            row = 1,
+            seat = 1,
             flight = com.example.ukrainianairlines.data.model.Flight(
                 id = selectedFlightId,
                 route = com.example.ukrainianairlines.data.model.Route(

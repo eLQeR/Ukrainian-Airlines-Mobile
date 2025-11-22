@@ -73,14 +73,29 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
             _error.value = null
             _searchResult.value = null
 
-            // Request all flights without filters (just retrieve the complete flights list)
-            repository.getFlights().collect { result ->
-                result.onSuccess { flights ->
-                    _flights.value = flights
-                    _searchResult.value = FlightSearchResult(directFlights = flights)
-                }.onFailure { exception ->
-                    _error.value = exception.message
-                    _flights.value = emptyList()
+            if (sourceAirport != null && destinationAirport != null && departureDate != null) {
+                // Use the transfer ways endpoint for better search results
+                repository.searchFlights(sourceAirport, destinationAirport, departureDate).collect { result ->
+                    result.onSuccess { response ->
+                        val searchResult = parseSearchResponse(response)
+                        _searchResult.value = searchResult
+                        // Also update the flights LiveData for backward compatibility
+                        _flights.value = searchResult.directFlights
+                    }.onFailure { exception ->
+                        _error.value = exception.message
+                        _flights.value = emptyList()
+                    }
+                }
+            } else {
+                // Fallback to basic flight search
+                repository.getFlights(sourceAirport, destinationAirport, departureDate).collect { result ->
+                    result.onSuccess { flights ->
+                        _flights.value = flights
+                        _searchResult.value = FlightSearchResult(directFlights = flights)
+                    }.onFailure { exception ->
+                        _error.value = exception.message
+                        _flights.value = emptyList()
+                    }
                 }
             }
             _isLoading.value = false

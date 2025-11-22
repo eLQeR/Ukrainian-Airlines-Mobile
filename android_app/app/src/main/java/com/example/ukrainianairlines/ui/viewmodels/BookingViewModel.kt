@@ -32,6 +32,12 @@ class BookingViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch {
             _isLoading.value = true
             _error.value = null
+            val token = tokenManager.getAccessToken()
+            if (token.isNullOrEmpty()) {
+                _error.value = "Authentication error: missing token. Please log in again."
+                _isLoading.value = false
+                return@launch
+            }
             repository.getOrders().collect { result ->
                 result.onSuccess { orders ->
                     _orders.value = orders
@@ -77,10 +83,16 @@ class BookingViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun getOrder(orderId: Int) {
+    fun loadOrder(orderId: Int) {
         viewModelScope.launch {
             _isLoading.value = true
             _error.value = null
+            val token = tokenManager.getAccessToken()
+            if (token.isNullOrEmpty()) {
+                _error.value = "Authentication error: missing token. Please log in again."
+                _isLoading.value = false
+                return@launch
+            }
             repository.getOrder(orderId).collect { result ->
                 result.onSuccess { order ->
                     _currentOrder.value = order

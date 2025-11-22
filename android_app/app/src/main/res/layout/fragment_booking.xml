@@ -84,38 +84,6 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Seat selection: Row -->
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/TextInput.UkrainianAirlines"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="@string/row">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/row_input"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Seat selection: Seat -->
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/TextInput.UkrainianAirlines"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="@string/seat">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/seat_input"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
                 <!-- Book Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/book_button"

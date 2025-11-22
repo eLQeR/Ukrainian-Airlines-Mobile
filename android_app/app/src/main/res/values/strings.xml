@@ -1,79 +1,35 @@
 <resources>
+    <string name="unknown_user">Unknown user</string>
     <string name="app_name">Ukrainian Airlines</string>
-
-    <!-- Common -->
-    <string name="search">Search</string>
-    <string name="book">Book</string>
-    <string name="cancel">Cancel</string>
-    <string name="confirm">Confirm</string>
-    <string name="loading">Loading...</string>
-    <string name="error">Error</string>
-    <string name="retry">Retry</string>
-    <string name="no_internet">No internet connection</string>
-
-    <!-- Navigation -->
-    <string name="nav_search">Search Flights</string>
-    <string name="nav_airports">Airports</string>
-    <string name="nav_bookings">My Bookings</string>
-    <string name="nav_profile">Profile</string>
-
-    <!-- Search Screen -->
-    <string name="from">From</string>
-    <string name="to">To</string>
-    <string name="departure_date">Departure Date</string>
-    <string name="return_date">Return Date</string>
-    <string name="passengers">Passengers</string>
-    <string name="one_way">One Way</string>
-    <string name="round_trip">Round Trip</string>
-    <string name="search_flights">Search Flights</string>
-    <string name="select_airport">Select Airport</string>
-    <string name="select_date">Select Date</string>
-
-    <!-- Flight Results -->
-    <string name="flight_results">Flight Results</string>
-    <string name="no_flights_found">No flights found</string>
-    <string name="direct">Direct</string>
-    <string name="stops">stop(s)</string>
-    <string name="duration">Duration</string>
-    <string name="price">Price</string>
-    <string name="select_flight">Select Flight</string>
-
-    <!-- Booking -->
     <string name="passenger_details">Passenger Details</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="email">Email</string>
-    <string name="phone">Phone</string>
     <string name="book_flight">Book Flight</string>
-    <string name="booking_confirmed">Booking Confirmed</string>
-    <string name="booking_failed">Booking Failed</string>
-
-    <!-- Seat selection -->
-    <string name="row">Row</string>
-    <string name="seat">Seat</string>
-
-    <!-- Authentication -->
+    <string name="flight_results">Flight Results</string>
+    <string name="no_flights_found">No flights found</string>
     <string name="login">Login</string>
-    <string name="register">Register</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="logout">Logout</string>
-    <string name="login_required">Login Required</string>
-    <string name="invalid_credentials">Invalid credentials</string>
-
-    <!-- Profile -->
     <string name="my_profile">My Profile</string>
-    <string name="edit_profile">Edit Profile</string>
-    <string name="save">Save</string>
-
-    <!-- Orders -->
-    <string name="my_orders">My Orders</string>
-    <string name="order_details">Order Details</string>
-    <string name="order_cancelled">Order Cancelled</string>
-    <string name="cancel_order">Cancel Order</string>
-
-    <!-- Airports -->
-    <string name="airport_details">Airport Details</string>
-    <string name="airports_empty">No airports available</string>
+    <string name="logout">Logout</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="search_flights">Search Flights</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="departure_date">Departure Date</string>
+    <string name="select_flight">Select Flight</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_bookings">Bookings</string>
+    <string name="nav_profile">Profile</string>
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="booking_confirmed">Booking Confirmed</string>
+    <string name="logged_in_as">Logged in as: %1$s</string>
+    <string name="order_id_format">Order #%1$d</string>
+    <string name="tickets_count_format">%1$d ticket(s)</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="status_active">Active</string>
+    <string name="login_required">Login required</string>
+    <string name="no_orders_found">No orders found</string>
 </resources>

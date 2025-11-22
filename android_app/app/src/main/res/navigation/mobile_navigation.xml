@@ -5,6 +5,12 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/nav_search">
 
+    <action
+        android:id="@+id/action_global_to_login"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+
     <fragment
         android:id="@+id/nav_search"
         android:name="com.example.ukrainianairlines.ui.screens.SearchFragment"
@@ -19,7 +25,11 @@
         android:id="@+id/nav_bookings"
         android:name="com.example.ukrainianairlines.ui.screens.BookingsFragment"
         android:label="@string/nav_bookings"
-        tools:layout="@layout/fragment_bookings" />
+        tools:layout="@layout/fragment_bookings">
+        <action
+            android:id="@+id/action_nav_bookings_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_profile"
@@ -44,9 +54,6 @@
         <action
             android:id="@+id/action_flightResultsFragment_to_bookingFragment"
             app:destination="@id/bookingFragment" />
-        <action
-            android:id="@+id/action_flightResultsFragment_to_flightDetailsFragment"
-            app:destination="@id/flightDetailsFragment" />
     </fragment>
 
     <fragment
@@ -57,19 +64,6 @@
         <argument
             android:name="flightId"
             app:argType="integer" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/flightDetailsFragment"
-        android:name="com.example.ukrainianairlines.ui.screens.FlightDetailsFragment"
-        android:label="@string/select_flight"
-        tools:layout="@layout/fragment_flight_details">
-        <argument
-            android:name="flightId"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_flightDetailsFragment_to_bookingFragment"
-            app:destination="@id/bookingFragment" />
     </fragment>
 
     <fragment
@@ -84,24 +78,13 @@
         android:label="@string/register"
         tools:layout="@layout/fragment_register" />
 
-    <!-- Airports list and details -->
     <fragment
-        android:id="@+id/nav_airports"
-        android:name="com.example.ukrainianairlines.ui.screens.AirportsListFragment"
-        android:label="@string/nav_airports"
-        tools:layout="@layout/fragment_airports_list">
-        <action
-            android:id="@+id/action_nav_airports_to_airportDetails"
-            app:destination="@id/airportDetailsFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/airportDetailsFragment"
-        android:name="com.example.ukrainianairlines.ui.screens.AirportDetailsFragment"
-        android:label="@string/airport_details"
-        tools:layout="@layout/fragment_airport_details">
+        android:id="@+id/orderDetailFragment"
+        android:name="com.example.ukrainianairlines.ui.screens.OrderDetailFragment"
+        android:label="Order Details"
+        tools:layout="@layout/fragment_order_detail">
         <argument
-            android:name="airportId"
+            android:name="orderId"
             app:argType="integer" />
     </fragment>
 

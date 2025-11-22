@@ -30,4 +30,17 @@
         app:layout_insetEdge="bottom"
         app:menu="@menu/bottom_nav_menu" />
 
+    <ImageView
+        android:id="@+id/copilot_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_copilot"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_copilot"
+        android:contentDescription="Copilot Chat"
+        android:clickable="true"
+        android:focusable="true" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
