@@ -48,6 +48,10 @@
     <string name="booking_confirmed">Booking Confirmed</string>
     <string name="booking_failed">Booking Failed</string>
 
+    <!-- Seat selection -->
+    <string name="row">Row</string>
+    <string name="seat">Seat</string>
+
     <!-- Authentication -->
     <string name="login">Login</string>
     <string name="register">Register</string>

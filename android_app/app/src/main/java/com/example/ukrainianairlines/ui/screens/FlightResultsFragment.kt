@@ -8,6 +8,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import android.util.Log
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -57,9 +58,10 @@ class FlightResultsFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        flightAdapter = FlightAdapter { flight ->
-            navigateToBooking(flight)
-        }
+        flightAdapter = FlightAdapter(
+            onBookClick = { flight -> navigateToBooking(flight) },
+            onItemClick = { flight -> navigateToDetails(flight) }
+        )
 
         flightsRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -69,8 +71,18 @@ class FlightResultsFragment : Fragment() {
 
     private fun observeViewModel() {
         searchViewModel.flights.observe(viewLifecycleOwner) { flights ->
-            flightAdapter.submitList(flights)
-            updateUI(flights.isEmpty())
+            try {
+                flightAdapter.submitList(flights)
+                updateUI(flights.isEmpty())
+            } catch (e: Exception) {
+                Log.e("UAR.UI", "Error updating flights UI", e)
+                // Show a user-friendly message
+                try {
+                    Snackbar.make(requireView(), "Помилка відображення результатів", Snackbar.LENGTH_LONG).show()
+                } catch (_: Exception) {
+                    // ignore if view is not available
+                }
+            }
         }
 
         searchViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
@@ -109,5 +121,12 @@ class FlightResultsFragment : Fragment() {
             putInt("flightId", flight.id)
         }
         findNavController().navigate(R.id.action_flightResultsFragment_to_bookingFragment, bundle)
+    }
+
+    private fun navigateToDetails(flight: Flight) {
+        val bundle = Bundle().apply {
+            putInt("flightId", flight.id)
+        }
+        findNavController().navigate(R.id.action_flightResultsFragment_to_flightDetailsFragment, bundle)
     }
 }

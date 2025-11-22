@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_flightResultsFragment_to_bookingFragment"
             app:destination="@id/bookingFragment" />
+        <action
+            android:id="@+id/action_flightResultsFragment_to_flightDetailsFragment"
+            app:destination="@id/flightDetailsFragment" />
     </fragment>
 
     <fragment
@@ -54,6 +57,19 @@
         <argument
             android:name="flightId"
             app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/flightDetailsFragment"
+        android:name="com.example.ukrainianairlines.ui.screens.FlightDetailsFragment"
+        android:label="@string/select_flight"
+        tools:layout="@layout/fragment_flight_details">
+        <argument
+            android:name="flightId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_flightDetailsFragment_to_bookingFragment"
+            app:destination="@id/bookingFragment" />
     </fragment>
 
     <fragment

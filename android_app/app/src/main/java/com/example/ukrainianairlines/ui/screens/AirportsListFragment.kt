@@ -69,7 +69,6 @@ class AirportsListFragment : Fragment() {
             fallback
         }
     }
-
     private fun observeViewModel() {
         viewModel.airports.observe(viewLifecycleOwner) { airports ->
             try {

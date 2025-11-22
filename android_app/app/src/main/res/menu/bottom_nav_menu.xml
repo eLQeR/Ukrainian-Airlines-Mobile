@@ -6,6 +6,12 @@
         android:icon="@drawable/ic_search"
         android:title="@string/nav_search" />
 
+    <!-- Flights tab -> opens Flight Results (uses existing nav destination id) -->
+    <item
+        android:id="@+id/flightResultsFragment"
+        android:icon="@drawable/ic_swap"
+        android:title="@string/flight_results" />
+
     <item
         android:id="@+id/nav_airports"
         android:icon="@drawable/ic_search"

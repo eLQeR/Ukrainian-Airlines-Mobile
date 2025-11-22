@@ -12,9 +12,12 @@ import com.example.ukrainianairlines.R
 import com.example.ukrainianairlines.data.model.Flight
 import java.text.SimpleDateFormat
 import java.util.*
+import android.util.Log
 
-class FlightAdapter(private val onFlightClick: (Flight) -> Unit) :
-    ListAdapter<Flight, FlightAdapter.FlightViewHolder>(FlightDiffCallback()) {
+class FlightAdapter(
+    private val onBookClick: (Flight) -> Unit,
+    private val onItemClick: (Flight) -> Unit
+) : ListAdapter<Flight, FlightAdapter.FlightViewHolder>(FlightDiffCallback()) {
 
     private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     private val dateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
@@ -40,39 +43,61 @@ class FlightAdapter(private val onFlightClick: (Flight) -> Unit) :
         private val bookButton: Button = itemView.findViewById(R.id.book_button)
 
         init {
+            // Book button -> navigate to booking
             bookButton.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    onFlightClick(getItem(position))
+                    onBookClick(getItem(position))
+                }
+            }
+
+            // Whole item click -> open flight details
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(getItem(position))
                 }
             }
         }
 
         fun bind(flight: Flight) {
-            // Route
-            routeText.text = "${flight.route.source.closest_big_city} → ${flight.route.destination.closest_big_city}"
+            try {
+                // Binding logic
+                // Route
+                routeText.text = "${flight.route.source.closest_big_city} → ${flight.route.destination.closest_big_city}"
 
-            // Times
-            departureTimeText.text = timeFormat.format(
-                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
-                    .parse(flight.departure_time) ?: Date()
-            )
-            arrivalTimeText.text = timeFormat.format(
-                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
-                    .parse(flight.arrival_time) ?: Date()
-            )
+                // Times
+                departureTimeText.text = timeFormat.format(
+                    SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+                        .parse(flight.departure_time) ?: Date()
+                )
+                arrivalTimeText.text = timeFormat.format(
+                    SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+                        .parse(flight.arrival_time) ?: Date()
+                )
 
-            // Duration
-            durationText.text = flight.time_of_flight ?: "N/A"
+                // Duration
+                durationText.text = flight.time_of_flight ?: "N/A"
 
-            // Airplane
-            airplaneText.text = flight.airplane.name
+                // Airplane
+                airplaneText.text = flight.airplane.name
 
-            // Available seats
-            seatsText.text = "${flight.tickets_available} seats available"
+                // Available seats
+                seatsText.text = "${flight.tickets_available} seats available"
 
-            // Price (placeholder - you might want to add price to your model)
-            priceText.text = "From $299"
+                // Price (placeholder - you might want to add price to your model)
+                priceText.text = "From $299"
+            } catch (e: Exception) {
+                Log.e("UAR.Adapter", "Failed to bind flight id=${flight.id}", e)
+                // Provide safe fallbacks to avoid blank UI
+                try { routeText.text = "N/A" } catch (_: Exception) {}
+                try { departureTimeText.text = "--:--" } catch (_: Exception) {}
+                try { arrivalTimeText.text = "--:--" } catch (_: Exception) {}
+                try { durationText.text = "N/A" } catch (_: Exception) {}
+                try { airplaneText.text = "Unknown" } catch (_: Exception) {}
+                try { seatsText.text = "0 seats available" } catch (_: Exception) {}
+                try { priceText.text = "From --" } catch (_: Exception) {}
+            }
         }
     }
 

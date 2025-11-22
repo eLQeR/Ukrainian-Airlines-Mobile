@@ -29,10 +29,10 @@ interface UkrainianAirlinesApi {
         @Query("destination_airport") destinationAirport: Int? = null,
         @Query("departure_date") departureDate: String? = null,
         @Query("route") route: Int? = null
-    ): Response<List<Flight>>
+    ): Response<JsonElement>
 
     @GET("api/airlines/flights/{id}/")
-    suspend fun getFlight(@Path("id") flightId: Int): Response<Flight>
+    suspend fun getFlight(@Path("id") flightId: Int): Response<JsonElement>
 
     // Airports
     @GET("api/airlines/airports/")
@@ -53,19 +53,19 @@ interface UkrainianAirlinesApi {
 
     // Orders
     @GET("api/airlines/orders/")
-    suspend fun getOrders(): Response<List<Order>>
+    suspend fun getOrders(): Response<com.google.gson.JsonElement>
 
     @POST("api/airlines/orders/")
-    suspend fun createOrder(@Body order: Order): Response<Order>
+    suspend fun createOrder(@Body order: com.google.gson.JsonElement): Response<com.google.gson.JsonElement>
 
     @GET("api/airlines/orders/{id}/")
-    suspend fun getOrder(@Path("id") orderId: Int): Response<Order>
+    suspend fun getOrder(@Path("id") orderId: Int): Response<com.google.gson.JsonElement>
 
     @POST("api/airlines/orders/{id}/cancel/")
-    suspend fun cancelOrder(@Path("id") orderId: Int): Response<Order>
+    suspend fun cancelOrder(@Path("id") orderId: Int): Response<com.google.gson.JsonElement>
 
-    // Flight search with transfers
-    @GET("api/airlines/get-ways/")
+    // Flight search (use flights endpoint)
+    @GET("api/airlines/flights/")
     suspend fun searchFlights(
         @Query("airport1") fromAirport: Int,
         @Query("airport2") toAirport: Int,
