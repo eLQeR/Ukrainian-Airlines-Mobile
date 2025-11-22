@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.screens.FlightDetailsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/details_route_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.UkrainianAirlines.Headline2"
+            tools:text="Kyiv → Warsaw" />
+
+        <TextView
+            android:id="@+id/details_departure_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="2025-12-01T14:30:00" />
+
+        <TextView
+            android:id="@+id/details_arrival_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="2025-12-01T16:45:00" />
+
+        <TextView
+            android:id="@+id/details_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="8dp"
+            tools:text="2h 15m" />
+
+        <TextView
+            android:id="@+id/details_airplane"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            tools:text="Boeing 737-800" />
+
+        <TextView
+            android:id="@+id/details_seats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            tools:text="24 seats available" />
+
+        <TextView
+            android:id="@+id/details_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.UkrainianAirlines.Headline2"
+            android:layout_marginTop="12dp"
+            tools:text="From $299" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/details_book_button"
+            style="@style/Button.UkrainianAirlines.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/select_flight" />
+
+    </LinearLayout>
+
+</ScrollView>
